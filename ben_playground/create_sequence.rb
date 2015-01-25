@@ -11,22 +11,22 @@ class GridPlot
 	end
 
 	def bigger_smaller(x_complex, y_complex)
-		if ((x_complex.real**2)+(x_complex.imag**2))<((y_complex.real**2)+(y_complex.imag**2))
+		if ((x_complex.real**2)+(x_complex.imag**2))>((y_complex.real**2)+(y_complex.imag**2))
 			@bigger = @x_complex
 			@smaller = @y_complex
-		elsif ((x_complex.real**2)+(x_complex.imag**2))>((y_complex.real**2)+(y_complex.imag**2))
+		elsif ((x_complex.real**2)+(x_complex.imag**2))<((y_complex.real**2)+(y_complex.imag**2))
 			@bigger = @y_complex
 			@smaller = @x_complex
-		elsif x_complex.real < y_complex.real
-			@bigger = @x_complex
-			@smaller = @y_complex
 		elsif x_complex.real > y_complex.real
-			@bigger = @y_complex
-			@smaller = @x_complex
-		elsif x_complex.imag < y_complex.imag
 			@bigger = @x_complex
 			@smaller = @y_complex
-		else x_complex.imag > y_complex.imag
+		elsif x_complex.real < y_complex.real
+			@bigger = @y_complex
+			@smaller = @x_complex
+		elsif x_complex.imag > y_complex.imag
+			@bigger = @x_complex
+			@smaller = @y_complex
+		else x_complex.imag < y_complex.imag
 			@bigger = @y_complex
 			@smaller = @x_complex
 		end
@@ -126,9 +126,13 @@ class Grid
 	end
 
 	def print_plots()
+		f = File.new("data.csv", "w+")
 		@all_points.each do |point|
 			print "x: #{point.x} y: #{point.y} bigger: #{point.bigger} smaller: #{point.smaller} steps: #{point.steps}"
-			puts
+
+			CSV.open("data.csv", "wb") do |csv|
+				csv << [point.y, point.y, point.x_complex, point.y_complex, point.bigger, point.smaller, point.steps]
+			end
 		end
 	end
 

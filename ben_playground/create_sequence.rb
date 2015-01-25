@@ -129,10 +129,11 @@ class Grid
 		f = File.new("data.csv", "w+")
 		@all_points.each do |point|
 			print "x: #{point.x} y: #{point.y} bigger: #{point.bigger} smaller: #{point.smaller} steps: #{point.steps}"
+			puts
 
-			CSV.open("data.csv", "wb") do |csv|
-				csv << [point.y, point.y, point.x_complex, point.y_complex, point.bigger, point.smaller, point.steps]
-			end
+			#CSV.open("data.csv", "wb") do |csv|
+			#	csv << [point.y, point.y, point.x_complex, point.y_complex, point.bigger, point.smaller, point.steps]
+			#end
 		end
 	end
 

@@ -62,6 +62,10 @@ def steps_to_ea(complex_1, complex_2)
 		puts "$$$$$$$$$$$$$$$$"
 		divided = complex_divide(complex_1, complex_2)
 		remainder = complex_1 - (string_to_rounded_complex_number(complex_to_string(divided)))*complex_2
+		puts divided.real.to_i
+		puts divided.imag.to_i
+		puts Complex(divided.real, divided.imag)
+		#remainder = complex_1 - Complex((divided.real).to_i, (divided.imag).to_i)*complex_2
 		complex_1=complex_2
 		complex_2=remainder
 		count+=1
@@ -76,10 +80,9 @@ end
 
 #puts string_to_rounded_complex_number(complex_to_string(complex_divide(Complex(3,-2), Complex(2,1))))
 
-#puts steps_to_ea(Complex(3,-2),Complex(2,1))
-
-#puts steps_to_ea(Complex(135,-14),Complex(155,34))
-puts steps_to_ea(Complex(-155,34),Complex(135,-14))
+puts steps_to_ea(Complex(3,-2),Complex(2,1))
+# puts steps_to_ea(Complex(135,-14),Complex(155,34))
+# puts steps_to_ea(Complex(-155,34),Complex(135,-14))
 #puts split_string(complex_to_string(complex_divide(Complex(-155,34),Complex(135,-14))))
 
 #puts complex_divide(Complex(3,-2),Complex(2,1))

@@ -1,3 +1,4 @@
+require "csv"
 class GridPlot
 	attr_accessor :x, :y, :x_complex, :y_complex, :bigger, :smaller, :steps
 
@@ -131,9 +132,9 @@ class Grid
 			print "x: #{point.x} y: #{point.y} bigger: #{point.bigger} smaller: #{point.smaller} steps: #{point.steps}"
 			puts
 
-			#CSV.open("data.csv", "wb") do |csv|
-			#	csv << [point.y, point.y, point.x_complex, point.y_complex, point.bigger, point.smaller, point.steps]
-			#end
+			CSV.open("data.csv", "a+") do |csv|
+				csv << [point.x, point.y, point.x_complex, point.y_complex, point.bigger, point.smaller, point.steps]
+			end
 		end
 	end
 

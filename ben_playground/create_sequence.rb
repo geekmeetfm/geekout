@@ -89,11 +89,11 @@ class GridPlot
 			#puts "all math/assignment for this iteration will now happen"
 			#puts "$$$$$$$$$$$$$$$$"
 			divided = complex_divide(complex_1, complex_2)
-			remainder = complex_1 - (string_to_rounded_complex_number(complex_to_string(divided)))*complex_2
+			#remainder = complex_1 - (string_to_rounded_complex_number(complex_to_string(divided)))*complex_2
 			#puts divided.real.to_i
 			#puts divided.imag.to_i
 			#puts Complex(divided.real, divided.imag)
-			#remainder = complex_1 - Complex((divided.real).to_i, (divided.imag).to_i)*complex_2
+			remainder = complex_1 - Complex((divided.real).to_f.round.to_i, (divided.imag).to_f.round.to_i)*complex_2
 			complex_1=complex_2
 			complex_2=remainder
 			count+=1

@@ -81,13 +81,13 @@ class GridPlot
 		count=0
 		remainder=nil
 		while remainder != 0
-			#puts "%%%%%%%%%%%%%%%"
-			#puts "Iteration number is " + (count+1).to_s
-			#puts "Current remainder (first iteration it should be nil)" + remainder.to_s
-			#puts "Current first number is " + complex_1.to_s
-			#puts "Current second number is " + complex_2.to_s
-			#puts "all math/assignment for this iteration will now happen"
-			#puts "$$$$$$$$$$$$$$$$"
+			# puts "%%%%%%%%%%%%%%%"
+			# puts "Iteration number is " + (count+1).to_s
+			# puts "Current remainder (first iteration it should be nil)" + remainder.to_s
+			# puts "Current first number is " + complex_1.to_s
+			# puts "Current second number is " + complex_2.to_s
+			# puts "all math/assignment for this iteration will now happen"
+			# puts "$$$$$$$$$$$$$$$$"
 			divided = complex_divide(complex_1, complex_2)
 			#remainder = complex_1 - (string_to_rounded_complex_number(complex_to_string(divided)))*complex_2
 			#puts divided.real.to_i
@@ -130,6 +130,7 @@ class Grid
 		f = File.new("data.csv", "w+")
 		@all_points.each do |point|
 			print "x: #{point.x} y: #{point.y} bigger: #{point.bigger} smaller: #{point.smaller} steps: #{point.steps}"
+			
 			puts
 
 			CSV.open("data.csv", "a+") do |csv|
@@ -148,13 +149,23 @@ def make_basic_sequence(number)
 	for i in 0..number-1
 		complex_arr << Complex(i+1, i+1)
 	end
+
 	complex_arr
+end
+
+def crazy_numbers()
+
+	numbers = []
+	CSV.foreach('NormTermOrder10000.csv') do |row|
+  		
+	end
 end
 
 #print make_basic_sequence(100)
 
 #x=GridPlot.new(0,1,3,4)
 
+#print make_basic_sequence(100)
 grid_one = Grid.new(make_basic_sequence(100))
 grid_one.print_plots
 

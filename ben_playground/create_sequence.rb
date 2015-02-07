@@ -204,11 +204,11 @@ end
 def crazy_numbers()
 	numbers = []
 	count=0
-	CSV.foreach('../NormTermOrder10000.csv') do |row|
+	CSV.foreach('../LexTermOrder10000.csv') do |row|
 		
   			numbers << Complex(row[0], row[1])
   			count +=1
-  			if count > 5000
+  			if count > 100
   				break
   			end
 

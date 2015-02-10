@@ -57,7 +57,8 @@ class GridPlot
 
 	def print_plots()
 
-		#if @steps > @biggest
+		#if (@steps > @biggest)
+		#if (@y!=1 && @x!=1)
 			CSV.open("data.csv", "a+") do |csv|
 				csv << [@x, @y, @bigger, @smaller, "here: ", @steps]
 			end
@@ -82,24 +83,21 @@ class Grid
 		@x=1
 		biggest = 0
 		@sequence.each do |number|		
-			@y=0
-			
+			@y=1			
 			@sequence.each do |second|
-				if @sequence.index(number) <= @sequence.index(second) 
-					fart = GridPlot.new(@x,@y,number,second,@sequence.index(number),@sequence.index(second), biggest)
-					if fart.biggest > biggest
-
-						biggest = fart.biggest
+					if @sequence.index(number) <= @sequence.index(second)
+						fart = GridPlot.new(@x,@y,number,second,@sequence.index(number),@sequence.index(second), biggest)
+						if fart.biggest > biggest
+							biggest = fart.biggest
+						end
+					# 	# puts "----------------------------"
+					# 	# puts "X: #{@x}"
+					# 	# puts "Y: #{@y}"
+					# 	# puts @sequence.index(number)
+					# 	# puts @sequence.index(second)
+					# 	# puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 					end
-				# 	# puts "----------------------------"
-				# 	# puts "X: #{@x}"
-				# 	# puts "Y: #{@y}"
-				# 	# puts @sequence.index(number)
-				# 	# puts @sequence.index(second)
-				# 	# puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-				end
-				p "#{@x} and #{@y}"
-
+					p "#{@x} and #{@y}"
 				@y+=1
 			end
 			@x+=1
